@@ -139,7 +139,7 @@
 			sourceTree = "<group>";
 		};
 
-		B34CF43D846C4CECA71A1BDF = {
+		A1B2C3D4E5F647A8B9C0D1E2 /* QuickMockup */ = {
 			isa = PBXGroup;
 			children = (
 				EFBD1F3777AC4F01B5BAEB20 /* App */,
@@ -148,6 +148,15 @@
 				EFD5810B09BB426A84317637 /* Utilities */,
 				71E9E09B19CD44139C09FA3D /* Assets.xcassets */,
 				DE4010A8DDC14733BED4A8FA /* QuickMockup.entitlements */,
+			);
+			path = QuickMockup;
+			sourceTree = "<group>";
+		};
+
+		B34CF43D846C4CECA71A1BDF = {
+			isa = PBXGroup;
+			children = (
+				A1B2C3D4E5F647A8B9C0D1E2 /* QuickMockup */,
 				DB218DF72869431698E9529B /* Products */,
 			);
 			sourceTree = "<group>";
