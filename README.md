@@ -46,3 +46,19 @@ QuickMockup/
 ## Opening the project
 
 Open `QuickMockup.xcodeproj` in Xcode and run the `QuickMockup` scheme (⌘R).
+
+## Building without Xcode
+
+Every build in this repo ships a `build.command` at the project root that
+compiles the app straight from the terminal via `xcodebuild` — no need to
+open Xcode. Requires only the Xcode Command Line Tools
+(`xcode-select --install`).
+
+```
+./build.command             # Release build, offers to launch the app when done
+./build.command debug       # Debug build instead
+./build.command --no-open   # Skip revealing/launching the app afterwards
+```
+
+Double-clicking `build.command` in Finder works too. The built app is written
+to `build/Build/Products/<Configuration>/QuickMockup.app`.
