@@ -49,13 +49,27 @@ fi
 
 echo "Building QuickMockup (${CONFIGURATION})…"
 
+LOG_FILE="$(pwd)/build.log"
+
+set +e
 xcodebuild \
     -project "$PROJECT" \
     -scheme "$SCHEME" \
     -configuration "$CONFIGURATION" \
     -derivedDataPath "$BUILD_DIR" \
     CODE_SIGNING_ALLOWED=NO \
-    build
+    build 2>&1 | tee "$LOG_FILE"
+BUILD_STATUS="${PIPESTATUS[0]}"
+set -e
+
+if [ "$BUILD_STATUS" -ne 0 ]; then
+    echo ""
+    echo "error: build failed. Relevant errors from $LOG_FILE:"
+    echo "----------------------------------------------------"
+    grep -E "error:|Compilation failed|BUILD FAILED" "$LOG_FILE" || echo "(no 'error:' lines found — see $LOG_FILE for the full log)"
+    echo "----------------------------------------------------"
+    exit "$BUILD_STATUS"
+fi
 
 APP_PATH="$BUILD_DIR/Build/Products/$CONFIGURATION/QuickMockup.app"
 
